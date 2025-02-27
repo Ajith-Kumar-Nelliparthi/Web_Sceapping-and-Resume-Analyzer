@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer & Web Scraper</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f8f9fa; }
+        .container { max-width: 500px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        h2 { text-align: center; }
+        .form-group { margin: 10px 0; }
+        select, input, button { width: 100%; padding: 10px; margin-top: 5px; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Resume Analyzer & Web Scraper</h2>
+
+        <form action="/scrape" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="option">Choose an option:</label>
+                <select name="option" id="option">
+                    <option value="website">Scrape Website</option>
+                    <option value="resume">Analyze Resume</option>
+                </select>
+            </div>
+
+            <div id="website-input" class="form-group">
+                <label for="url">Enter Website URL:</label>
+                <input type="text" name="url" id="url">
+            </div>
+
+            <div id="resume-input" class="form-group" style="display: none;">
+                <label for="resume">Upload Resume (PDF only):</label>
+                <input type="file" name="resume" id="resume" accept=".pdf">
+                
+                <label for="job_role">Select Job Role:</label>
+                <select name="job_role" id="job_role">
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="AI Engineer">AI Engineer</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="DevOps Engineer">DevOps Engineer</option>
+                    <option value="Cybersecurity Analyst">Cybersecurity Analyst</option>
+                    <option value="Cloud Engineer">Cloud Engineer</option>
+                    <option value="Database Administrator">Database Administrator</option>
+                    <option value="QA Engineer">QA Engineer</option>
+                    <option value="Mobile Developer">Mobile Developer</option>
+                    <option value="UI/UX Designer">UI/UX Designer</option>
+                    <option value="Game Developer">Game Developer</option>
+                    <option value="Embedded Systems Engineer">Embedded Systems Engineer</option>
+                    <option value="Blockchain Developer">Blockchain Developer</option>
+                    <option value="ML Engineer">ML Engineer</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("option").addEventListener("change", function() {
+            if (this.value === "website") {
+                document.getElementById("website-input").style.display = "block";
+                document.getElementById("resume-input").style.display = "none";
+            } else {
+                document.getElementById("website-input").style.display = "none";
+                document.getElementById("resume-input").style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+</html>
